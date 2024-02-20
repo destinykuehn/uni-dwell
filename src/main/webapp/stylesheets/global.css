@@ -1,0 +1,119 @@
+:root {
+    --royal-blue-traditional: #03256cff;
+    --persian-blue: #2541b2ff;
+    --green-blue: #1768acff;
+    --aero: #06bee1ff;
+    --light-royal: #b3bdd3;
+    --light-persian: #e9ecf7;
+    --light-aero: #b8f1ff;
+    --white: #ffffffff;
+    --green: #9FFF36;
+    --dark-green: #0f1905;
+    --header-height: 12%;
+    --search-filter-height: 6%;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    font-family: Optima, sans-serif;
+    text-transform: none;
+    text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100svh;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    /*place-content: center;*/
+    place-items: center;
+}
+
+header {
+    /*display: flex;*/
+    place-items: center;
+    /*justify-content: space-around;*/
+    color: var(--light-persian);
+    width: 100%;
+    height: var(--header-height);
+    /*box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3);*/
+    background: transparent;
+    position: relative;
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+}
+
+header img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 2.25rem;
+    font-family: Gill Sans, sans-serif;
+    margin-bottom: 1.25rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-family: Gill Sans, sans-serif;
+}
+
+a {
+    color: var(--aero);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+a:hover {
+    color: var(--light-aero);
+}
+
+p {
+    font-size: 1rem;
+    font-family: Optima, sans-serif;
+    text-align: center;
+}
+
+/*button {*/
+/*    color: black;*/
+/*    background-color: var(--white);*/
+/*    border-radius: 5px;*/
+/*    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.3);*/
+/*    border: none;*/
+/*    cursor: pointer;*/
+/*    transition: 0.2s;*/
+/*}*/
+
+/*button:hover {*/
+/*    color: var(--white);*/
+/*    background-color: var(--aero);*/
+/*}*/
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    color: black;
+    background-color: var(--white);
+    border-radius: 5px;
+    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.3);
+    border: none;
+    padding: 0.25rem;
+    margin: 0.25rem 0;
+}
+
+.fa-user {
+    font-size: 2rem;
+    cursor: pointer;
+}
