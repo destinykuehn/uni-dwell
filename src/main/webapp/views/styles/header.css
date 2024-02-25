@@ -20,3 +20,21 @@ header {
 header a {
     color:red;
 }
+
+header div {
+    background-color: blue;
+    height: 100%;
+    width: fit-content;
+    margin-left: 1.5rem;
+}
+
+header div a img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+header a i {
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+}

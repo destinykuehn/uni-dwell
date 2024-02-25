@@ -4,9 +4,10 @@ package controllers;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
-
+import java.sql.DriverManager;
 import java.sql.*;
 import java.util.logging.Logger;
+import java.sql.Connection;
 
 @WebServlet("/DatabaseServlet")
 public abstract class DatabaseServlet extends HttpServlet {
@@ -19,12 +20,12 @@ public abstract class DatabaseServlet extends HttpServlet {
             String ps = switch(user) {
                 case "selectcollege" -> "selectCollege";
                 case "admin" -> "cse3026uni-dwell";
-                case "student" -> "studentPassword";
-                case "host" -> "hostPassword";
+                case "gen_user" -> "genPassword";
                 default -> "";
             };
+
             /* Establish the connection */
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
             Connection con = DriverManager.getConnection(url, user, ps);
 
             int result = switch (action) {
