@@ -1,248 +1,214 @@
 body {
-    background-color: var(--royal-blue-traditional);
+    background-color: #4059e3;
 }
 
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    height: 70%;
-    transition: 0.5s ease;
+h2 {
+    color: rgba(0, 0, 0, 0.75);
 }
 
-.wrapper:hover {
-    width: 63%;
-    height: 73%;
+.label {
+    color: rgba(0, 0, 0, 0.3);
+    margin: 1rem 0 0.5rem;
 }
 
-.container {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    border-radius: 25px;
-    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3);
-    position: relative;
-    background-color: var(--persian-blue);
-    color: var(--light-persian);
+.remember-forget label {
+    color: rgba(0, 0, 0, 0.3);
 }
 
-.tab-container {
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    place-content: center;
-    place-items: center;
-    padding-top: 0.5rem;
-    /*position: relative;*/
+.label,
+.remember-forget label,
+.remember-forget a {
+    font-size: 12px;
 }
 
-.tab-container > button {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    width: 40%;
-    margin: 0 0.25rem;
-    box-shadow: 0 -1rem 1rem rgba(0, 0, 0, 0.3);
-}
-
-#host-button {
-    color: var(--royal-blue-traditional);
-    background-color: var(--light-persian);
-}
-
-#student-container,
-#host-container {
-    width: 100%;
-    height: 100%;
-    /*position: relative;*/
-    display: flex;
-    place-content: space-evenly;
-    place-items: center;
-}
-
-.container,
-#student-container,
-#host-container {
-    border-radius: 25px;
-}
-
-#host-container {
-    display: none;
-}
-
-.student-sign-in-container,
-.student-sign-up-container,
-.host-sign-in-container,
-.host-sign-up-container {
-    border-radius: 25px;
-    display: flex;
-    flex-direction: column;
-    place-content: center;
-    place-items: center;
-    height: 100%;
-    width: 50%;
-    transition: all 0.7s ease-out;
-}
-
-.student-sign-up-container,
-.host-sign-up-container {
-    border-radius: 0;
-}
-
-.student-sign-up-container,
-.host-sign-up-container {
+#sign-up-container {
+    /* size */
+    width: 65%;
     height: 80%;
-    box-shadow: 0 0 2rem 0.25rem rgba(0, 0, 0, 0.5);
-}
 
-.student-sign-in-container > button,
-.student-sign-up-container > button,
-.host-sign-in-container > button,
-.host-sign-up-container > button {
-    width: 50%;
-}
-
-.student-sign-in-container > p {
-    margin: 0 0 1rem;
-}
-
-.sign-in-with {
-    margin-bottom: 1rem;
-}
-
-.or {
-    position: relative;
-    width: 100%;
-    display: flex;
-    place-content: center;
+    /* layout */
+    display: grid;
     place-items: center;
-    margin: 0.75rem 0 1.25rem;
-}
+    grid-template-columns: 1fr 1fr;
 
-.or p {
-    position: absolute;
-    background-color: var(--persian-blue);
-    padding: 0 1rem;
-}
+    /* appearance */
+    background-color: white;
+    border-radius: 10px;
+    /*box-shadow: white 0 0 1rem;*/
 
-.line {
-    width: 50%;
-    border: 0.5px solid black;
-}
-
-.student-sign-up-container {
-    border-top-left-radius: 50%;
-    border-bottom-left-radius: 50%;
-}
-
-.host-sign-up-container {
-    border-top-right-radius: 50%;
-    border-bottom-right-radius: 50%;
-}
-
-.student-sign-up-container,
-.host-sign-up-container {
-    background-color: var(--green);
-    color: var(--dark-green);
-}
-
-button {
-    color: var(--light-persian);
-    background-color: var(--persian-blue);
-    border-radius: 5px;
-    padding: 0.25rem 0.5rem;
-    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.3);
-    border: none;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.submit-btn {
-    color: var(--light-persian);
-    background-color: var(--royal-blue-traditional);
-}
-
-a {
-    margin: 5rem 0 1rem;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-    text-align: left;
-    width: 70%;
-    background-color: var(--light-persian);
     color: black;
 }
 
-i {
-    cursor: pointer;
-    padding: 0.5rem;
-    background-color: var(--royal-blue-traditional);
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.3);
+.col-size {
+    /* size */
+    width: 55%;
+    height: 80%;
+    position: relative;
 }
 
-/* mobile compatibility */
-@media (max-width: 600px) {
-    body {
-        overflow: hidden;
-    }
+#sign-up-left {
+    /*background-color: green;*/
+    justify-content: space-between;
+    padding: 1rem;
+}
 
-    .student-sign-in-container,
-    .student-sign-up-container,
-    .host-sign-in-container,
-    .host-sign-up-container {
-        width: 100%;
-    }
+#sign-up-right {
+    /*background-color: red;*/
+}
 
-    .wrapper {
-        width: 95%;
-        height: 90%;
-    }
+#sign-up-left, #sign-up-right {
+    display: flex;
+    flex-direction: column;
+    /*place-items: start;*/
+}
 
-    .wrapper:hover {
-        width: 95%;
-        height: 90%;
-    }
+#sign-up-left div {
+    width: 100%;
+    height: fit-content;
+}
 
-    #student-container,
-    #host-container {
-        position: relative;
-        flex-direction: column;
-    }
+#sign-up-left form {
+    width: 100%;
+    height: 50%;
+    place-content: space-evenly;
+    /*height: 100%;*/
+    /*background-color: orange;*/
+}
 
-    .mobile-or {
-        position: relative;
-        width: 100%;
-        display: flex;
-        place-content: center;
-        place-items: center;
-        margin: 0.75rem 0 1.25rem;
-    }
+.flex-row {
+    display: flex;
+}
 
-    .mobile-or p {
-        position: absolute;
-        background-color: var(--green);
-        padding: 0 1rem;
-    }
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    place-items: start;
+}
 
-    .mobile-sign-in-with i,
-    .host-sign-up-container button {
-        background-color: var(--dark-green);
-        color: var(--light-persian);
-    }
+.logo {
+    place-items: center;
+    /*height: 20px;*/
+    /*background-color: purple;*/
+}
 
-    .student-sign-up-container,
-    .host-sign-up-container {
-        border-radius: 50%;
-        position: absolute;
-        bottom: 0;
-        transform: translateY(100%);
-    }
+.logo img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
 
-    .student-sign-up-container,
-    .host-sign-up-container {
-        opacity: 0;
-    }
+.remember-forget {
+    /* size */
+    width: 100%;
+    height: 100%;
+    /*background-color: yellow;*/
+
+    /* layout */
+    /*display: flex;*/
+    justify-content: space-between;
+    place-items: center;
+    margin-top: 1rem;
+}
+
+.remember-forget label {
+    cursor: pointer;
+    position: relative;
+}
+
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    padding: 0.5rem 0.5rem;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+form input[type="checkbox"] {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.c1 {
+    position: absolute;
+    top: 4.5px;
+    left: 2.5px;
+    height: 5px;
+    width: 5px;
+    border-radius: 100%;
+    background-color: white;
+}
+
+form input[type="checkbox"]:checked {
+    background-color: #4059e3;
+}
+
+form input[type="submit"] {
+    width: 100%;
+    padding: 0.5rem 0;
+    background-color: #3951d2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 1rem 2rem;
+    transition: 0.3s;
+}
+
+form input[type="submit"]:hover {
+    color: #3951d2;
+    background-color: white;
+}
+
+.center {
+    place-self: center;
+    /*background-color: purple;*/
+}
+
+.center {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.center, .center a {
+    font-size: 13px;
+}
+
+.help-links {
+    /*width: 100%;*/
+    /*background-color: #b3bdd3;*/
+    place-content: center;
+}
+
+.help-links p, .help-links p a {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#sign-up-right {
+    width: 80%;
+}
+
+#sign-up-right h4 {
+    margin-bottom: 1rem;
+}
+
+.second {
+    margin-top: 1.25rem;
+}
+
+.about-link {
+    margin-top: 0.5rem;
+}
+
+#sign-up-right ul {
+    margin-left: 1.5rem;
+}
+
+#sign-up-right ul li {
+    margin-bottom: 0.5rem;
 }
