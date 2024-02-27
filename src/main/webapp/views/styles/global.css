@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Marhey:wght@300..700&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marhey:wght@300..700&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Sofia&family=Style+Script&display=swap');
 * {
     padding: 0;
     margin: 0;
@@ -17,8 +17,8 @@ body {
 }
 
 h2 {
-    font-family: "Raleway", sans-serif;
-    font-size: 35px;
+    font-family: "Style Script", cursive;
+    font-size: 3rem;
 }
 
 h4 {
@@ -33,4 +33,32 @@ h4 {
 
 a {
     text-decoration: none;
+}
+
+#theme-container {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    background-color: white;
+    border-radius: 100%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 1rem;
+}
+
+.fa-sun, .fa-moon {
+    color: black;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.fa-sun:hover, .fa-moon:hover {
+    color: #003e9f;
+}
+
+.fa-moon {
+    display: none !important;
 }

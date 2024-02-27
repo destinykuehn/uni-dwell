@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/login.css">
+    <script src="https://kit.fontawesome.com/2db75599be.js" crossorigin="anonymous"></script>
     <title>Uni Dwell: Login</title>
 </head>
 <body>
@@ -15,7 +16,7 @@
     <div id="sign-up-left" class="col-size">
         <div class="logo flex-row">
             <img src="images/uni-dwell-tmp-logo.png">
-            <p>Uni Dwell</p>
+<%--            <p>Uni Dwell</p>--%>
         </div>
         <div class="flex-col">
             <p>Welcome to</p>
@@ -24,11 +25,11 @@
         <form autocomplete="off" class="flex-col" action="AccountServlet" method="POST">
             <div class="flex-col">
                 <p class="label">Email</p>
-                <input type="email" required>
+                <input type="sign-up-email" required>
             </div>
             <div class="flex-col">
                 <p class="label">Password</p>
-                <input type="password" required>
+                <input type="sign-up-password" required>
             </div>
             <div class="remember-forget flex-row">
                 <label>
@@ -61,9 +62,14 @@
             <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
             <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
             <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
         </ul>
     </div>
 </div>
+
+<div id="theme-container">
+    <i class="fa-solid fa-sun"></i>
+    <i class="fa-solid fa-moon"></i>
+</div>
+
 </body>
 </html>
