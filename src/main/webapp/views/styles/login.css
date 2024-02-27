@@ -14,6 +14,7 @@ h2 {
 .label {
     color: rgba(0, 0, 0, 0.3);
     margin: 1rem 0 0.5rem;
+    place-self: start;
 }
 
 .remember-forget label {
@@ -49,6 +50,7 @@ h2 {
     width: 55%;
     height: 80%;
     position: relative;
+    /*background-color: red;*/
 }
 
 #sign-up-left {
@@ -87,7 +89,7 @@ h2 {
 .flex-col {
     display: flex;
     flex-direction: column;
-    place-items: start;
+    place-items: center;
 }
 
 .logo {
@@ -126,6 +128,7 @@ form input[type="password"] {
     width: 100%;
     padding: 0.5rem 0.5rem;
     border-radius: 5px;
+    /*background-color: red;*/
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
@@ -155,6 +158,7 @@ form input[type="checkbox"]:checked {
 }
 
 form input[type="submit"] {
+    place-self: center;
     width: 100%;
     padding: 0.5rem 0;
     background-color: #003e9f;

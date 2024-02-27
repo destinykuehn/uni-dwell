@@ -66,10 +66,35 @@
     </div>
 </div>
 
-<div id="theme-container">
-    <i class="fa-solid fa-sun"></i>
-    <i class="fa-solid fa-moon"></i>
+<div id="theme-container"
+     onmouseenter="themeHover()"
+     onmouseleave="themeLeft()"
+     onclick="changeTheme()">
+    <i class="fa-solid fa-lightbulb" id="light"></i>
+    <i class="fa-solid fa-moon" id="dark"></i>
 </div>
 
+
+<script>
+    function changeTheme() {
+
+    }
+
+    function themeHover() {
+        let lightEle = document.getElementById("light");
+        let darkEle = document.getElementById("dark");
+        let color = "#003e9f";
+
+        lightEle.style.display !== "none" ? lightEle.style.color = color : darkEle.style.color = color;
+    }
+
+    function themeLeft() {
+        let lightEle = document.getElementById("light");
+        let darkEle = document.getElementById("dark");
+        let color = "black";
+
+        lightEle.style.display !== "none" ? lightEle.style.color = color : darkEle.style.color = color;
+    }
+</script>
 </body>
 </html>

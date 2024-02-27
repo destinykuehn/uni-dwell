@@ -47,17 +47,18 @@ a {
     place-items: center;
     place-content: center;
     box-shadow: rgba(0, 0, 0, 0.2) 0 0 1rem;
-}
-
-.fa-sun, .fa-moon {
-    color: black;
-    font-size: 1.5rem;
     cursor: pointer;
 }
 
-.fa-sun:hover, .fa-moon:hover {
-    color: #003e9f;
+.fa-lightbulb, .fa-moon {
+    color: black;
+    font-size: 1.5rem;
+    /*cursor: pointer;*/
 }
+
+/*.fa-lightbulb:hover, .fa-moon:hover {*/
+/*    color: #003e9f;*/
+/*}*/
 
 .fa-moon {
     display: none !important;
