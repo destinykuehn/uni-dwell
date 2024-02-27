@@ -25,11 +25,11 @@
         <form autocomplete="off" class="flex-col" action="AccountServlet" method="POST">
             <div class="flex-col">
                 <p class="label">Email</p>
-                <input type="sign-up-email" required>
+                <input type="email" name="sign-up-email" required>
             </div>
             <div class="flex-col">
                 <p class="label">Password</p>
-                <input type="sign-up-password" required>
+                <input type="password" name="sign-up-password" required>
             </div>
             <div class="remember-forget flex-row">
                 <label>
