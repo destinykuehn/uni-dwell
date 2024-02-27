@@ -1,9 +1,14 @@
 body {
-    background-color: #4059e3;
+    /*background-color: #4059e3;*/
+    background-image: url("../images/login-bg.jpeg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
 }
 
 h2 {
-    color: rgba(0, 0, 0, 0.75);
+    /*color: rgba(0, 0, 0, 0.8);*/
 }
 
 .label {
@@ -86,7 +91,8 @@ h2 {
 }
 
 .logo {
-    place-items: center;
+    /*place-items: center;*/
+    place-content: center;
     /*height: 20px;*/
     /*background-color: purple;*/
 }
@@ -145,13 +151,13 @@ form input[type="checkbox"] {
 }
 
 form input[type="checkbox"]:checked {
-    background-color: #4059e3;
+    background-color: #003e9f;
 }
 
 form input[type="submit"] {
     width: 100%;
     padding: 0.5rem 0;
-    background-color: #3951d2;
+    background-color: #003e9f;
     color: white;
     border: none;
     border-radius: 5px;
@@ -162,7 +168,7 @@ form input[type="submit"] {
 }
 
 form input[type="submit"]:hover {
-    color: #3951d2;
+    color: #003e9f;
     background-color: white;
 }
 
