@@ -2,9 +2,10 @@ package models.Users;
 
 import models.Listings.Listing;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class User {
+public class User implements Serializable {
 
     private String profilePic;
     private String firstName;

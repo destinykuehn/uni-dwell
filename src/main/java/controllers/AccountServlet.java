@@ -5,7 +5,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import models.Users.User;
 
+import java.io.IOException;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,11 +31,11 @@ public class AccountServlet extends HttpServlet {
             System.out.printf("Hello from %s%n", this.getClass().getName());
             if (req.getParameter("sign-up-email") != null && req.getParameter("sign-up-password") != null) {
                 if (verbose) System.out.println("Sign up attempted");
-                int res = handleSignUp(req);
+                int res = handleSignUp(req, resp);
                 if (res != 0) System.out.println("Rejected sign up");
             } else if (req.getParameter("sign-in-email") != null && req.getParameter("sign-in-password") != null) {
                 if (verbose) System.out.println("Sign in attempted");
-                int res = handleSignIn(req);
+                int res = handleSignIn(req, resp);
                 if (res != 0) System.out.println("Rejected sign in");
             }
         } catch (Exception e) {
@@ -47,11 +50,11 @@ public class AccountServlet extends HttpServlet {
         logger.throwing(ExampleServlet.class.getName(), "methodName", e);
     }
 
-    private int handleSignIn(HttpServletRequest req) {
+    private int handleSignIn(HttpServletRequest req, HttpServletResponse resp) {
         return 0;
     }
 
-    private int handleSignUp(HttpServletRequest req) {
+    private int handleSignUp(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String sign_up_email = req.getParameter("sign-up-email");
         String sign_up_pass = req.getParameter("sign-up-password");
         if (verbose) {
@@ -73,6 +76,7 @@ public class AccountServlet extends HttpServlet {
         } else {
             System.out.println("User not in database");
         }
+        createSession(req, resp);
         return 0;
     }
 
@@ -94,6 +98,7 @@ public class AccountServlet extends HttpServlet {
             if (verbose) System.out.println("The string does not contain a number.");
             return false;
         }
+        if (verbose) System.out.println("The string does contain a number");
         return true;
     }
 
@@ -128,5 +133,22 @@ public class AccountServlet extends HttpServlet {
 
     private int insertUserIntoDB(String email, String pw) {
         return 0;
+    }
+
+    private void createSession(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        HttpSession session = req.getSession(true);
+        session.setAttribute("email", "placeholder");
+        // placeholder
+        resp.sendRedirect("account.jsp");
+    }
+
+    private boolean checkCredentials(String email, String pw) {
+        String pwHash = Hasher.hash(pw);
+        //DatabaseServlet.getUser()
+        return true;
+    }
+
+    private void createUser() {
+
     }
 }
