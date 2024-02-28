@@ -1,0 +1,251 @@
+body {
+    /*background-color: #004bb4;*/
+    background-color: white;
+}
+
+.grid-container {
+    /* size */
+    width: 98%;
+    height: 95%;
+
+    /* appearance */
+    background-color: white;
+    /*border: 1px solid rgba(0, 0, 0, 0.2);*/
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 1rem;
+
+    /* layout */
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.left-col,
+.right-col {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.left-col {
+    /*background-color: white;*/
+}
+
+.right-col {
+    /*background-color: rgba(0, 0, 0, 0.05);*/
+}
+
+.logo {
+    width: 100%;
+    height: 8%;
+    /*background-color: red;*/
+    display: flex;
+    place-items: center;
+    place-content: center;
+    justify-content: space-evenly;
+    margin-top: 3rem;
+}
+
+.logo img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo h2 {
+    font-size: 2rem;
+}
+
+.nav-buttons {
+    margin-top: 2rem;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    /*background-color: red;*/
+}
+
+.nav-buttons button {
+    width: 80%;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.nav-buttons button i {
+    margin-right: 1rem;
+}
+
+.content {
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 1rem;
+    align-self: center;
+    margin: auto;
+}
+
+.content > *:not(h2) {
+    margin: 1.5rem 2.5rem;
+    padding: 1rem;
+    /*background-color: red;*/
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    height: fit-content;
+}
+
+.content h2 {
+    margin: 2rem 2.5rem 0;
+    /*background-color: blue;*/
+}
+
+.content-title {
+    display: flex;
+    place-items: center;
+    place-content: center;
+    justify-content: space-between;
+}
+
+
+
+
+/* content */
+
+#listings, #account. #messages {
+    width: 90%;
+    height: 90%;
+    background-color: white;
+    overflow: scroll;
+    transition: transform 0.5s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* account */
+
+.account-grid {
+    display: grid;
+    grid-template-columns: 3fr 3fr 1fr;
+}
+
+.profile-pic {
+    display: flex;
+    place-items: center;
+    justify-content: space-between;
+}
+
+.profile-pic div {
+    height: 70px;
+    display: flex;
+    place-items: center;
+}
+
+.profile-pic div img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+.personal-info-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    place-items: center;
+
+}
+
+.personal-info-grid div {
+    width: 100%;
+    /*background-color: rebeccapurple;*/
+    display: flex;
+    flex-direction: column;
+}
+
+.delete {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: red;
+    color: darkred;
+    border: none;
+    border-radius: 5px;
+}
+
+/* listings */
+
+.add-listing {
+    cursor: pointer;
+}
+
+.add-listing i {
+    font-size: 1.5rem;
+    color: #004bb4;
+}
+
+/*.add-listing:hover > i {*/
+/*    color: #38aed5;*/
+/*}*/
+
+.edit {
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    place-self: flex-end;
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.2);
+}
+
+/*.edit:hover {*/
+/*    color:#004bb4;*/
+/*}*/
+
+.edit i {
+    font-size: 0.8rem;
+    margin-right: 0.25rem;
+}
+
+.listing-grid {
+    /*width: 100%;*/
+    /*height: 100%;*/
+    display: grid;
+    place-items: center;
+    /*place-content: center;*/
+    grid-template-columns: 3fr 3fr 1fr;
+    /*background-color: #c62368;*/
+}
+
+.listing-grid img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.listing-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 80%;
+    height: 100%;
+}
+
+.listing-info h3 {
+    font-size: 1.5rem;
+}
+
+/*label {*/
+/*    color: black;*/
+/*}*/

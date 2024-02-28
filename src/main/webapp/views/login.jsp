@@ -1,3 +1,23 @@
+<%--<%@ page import="jakarta.servlet.http.Cookie" %>--%>
+
+<%--<%--%>
+<%--    Cookie[] cookies = request.getCookies();--%>
+<%--    boolean actionFound = false;--%>
+<%--    String action = "signUp";--%>
+<%--    if (cookies != null) {--%>
+<%--        for (Cookie c : cookies) {--%>
+<%--            actionFound = c.getName().equals("loginPageAction");--%>
+<%--            if (actionFound) {--%>
+<%--                action = c.getValue();--%>
+<%--                break;--%>
+<%--            }--%>
+<%--        }--%>
+<%--    }--%>
+<%--    if (!actionFound) {--%>
+<%--        response.addCookie(new Cookie("loginPageAction", action));--%>
+<%--    }--%>
+<%--%>--%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,11 +36,25 @@
     <div id="sign-up-left" class="col-size">
         <div class="logo flex-row">
             <img src="images/uni-dwell-tmp-logo.png">
-<%--            <p>Uni Dwell</p>--%>
         </div>
         <div class="flex-col">
-            <p>Welcome to</p>
-            <h2>Uni Dwell</h2>
+            <div id="sign-up-message">
+                <p>Welcome to</p>
+                <h2>Uni Dwell</h2>
+            </div>
+
+            <div id="log-in-message">
+                <h2>Welcome Back</h2>
+            </div>
+
+            <%--            <% if (action.equals("signIn")) { %>--%>
+<%--                <p>Welcome to</p>--%>
+<%--                <h2>Uni Dwell</h2>--%>
+<%--            <% }--%>
+<%--                else { %>--%>
+<%--                <h2>Welcome Back</h2>--%>
+<%--            <% } %>--%>
+
         </div>
         <form autocomplete="off" class="flex-col" action="AccountServlet" method="POST">
             <div class="flex-col">
@@ -41,7 +75,7 @@
             </div>
             <input type="submit" value="SIGN UP">
         </form>
-        <p class="center">Already have an account? <a href="#">Log in</a></p>
+        <p class="center">Already have an account? <a onclick="changeAction()">Log in</a></p>
         <div class="flex-row help-links">
             <p class="center"><a href="#">FAQ</a> | <a href="#">Features</a> | <a href="#">Support</a></p>
         </div>
@@ -66,6 +100,7 @@
     </div>
 </div>
 
+<!-- light/dark theme toggle -->
 <div id="theme-container"
      onmouseenter="themeHover()"
      onmouseleave="themeLeft()"
@@ -76,6 +111,27 @@
 
 
 <script>
+
+    function changeAction() {
+        let loginMessageEle = document.getElementById("log-in-message");
+        let action = loginMessageEle.style.display !== "none" ? "logIn" : "signUp";
+        // document.cookie = encodeURIComponent("loginPageAction") + "=" + encodeURIComponent(action) + ";";
+        console.log(action);
+        postChange(action);
+    }
+
+    function postChange(action) {
+        let loginMessageEle = document.getElementById("log-in-message");
+        let signupMessageEle = document.getElementById("sign-up-message");
+
+        if (action === "logIn") {
+            signupMessageEle.style.transform = "translateY(100px)";
+            // loginMessageEle.style.display = "flex";
+            loginMessageEle.style.transform = "translateY(0)";
+        }
+
+    }
+
     function changeTheme() {
 
     }
@@ -98,3 +154,7 @@
 </script>
 </body>
 </html>
+<%--<%--%>
+<%--    System.out.println(action);--%>
+
+<%--%>--%>

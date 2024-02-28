@@ -33,6 +33,30 @@ h4 {
 
 a {
     text-decoration: none;
+    cursor: pointer;
+}
+
+p a {
+    cursor: pointer;
+}
+
+.label, label {
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 12px;
+    margin-bottom: 0.5rem;
+}
+
+input {
+    padding: 0.3rem 0.3rem;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus{
+    outline: none; /* Disable the default blue border */
 }
 
 #theme-container {
@@ -55,10 +79,6 @@ a {
     font-size: 1.5rem;
     /*cursor: pointer;*/
 }
-
-/*.fa-lightbulb:hover, .fa-moon:hover {*/
-/*    color: #003e9f;*/
-/*}*/
 
 .fa-moon {
     display: none !important;
