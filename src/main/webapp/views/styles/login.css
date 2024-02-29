@@ -30,7 +30,7 @@ body {
 
 form {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
@@ -168,5 +168,12 @@ label a {
 .help-links a {
     color: white;
     border-bottom: 1px solid #990045;
+}
+
+.error {
+    background-color: darkred;
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 0.5rem;
 }
 

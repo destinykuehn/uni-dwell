@@ -1,4 +1,7 @@
 <form autocomplete="off" id="log-in-form">
+    <% if (request.getParameter("loginError") != null) { %>
+        <p class="error span-3">The email or password was incorrect.</p>
+    <%}%>
     <input type="hidden" name="action" value="log-in">
     <div class="span-3 message">
         <p>Hey there!</p>
