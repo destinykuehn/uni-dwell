@@ -28,7 +28,7 @@
         const logIn = document.getElementById("log-in-form")
         const signUp = document.getElementById("sign-up-form");
         if (to === "sign-up") {
-            logIn.style.transform = "translate(-50%, -500%)";
+            logIn.style.transform = "translate(-50%, -200%)";
             signUp.style.transform = "translate(-50%, -50%)";
         }
         else {
