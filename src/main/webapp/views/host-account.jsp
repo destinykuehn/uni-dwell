@@ -43,6 +43,8 @@
     </div>
 </div>
 
+<jsp:include page="components/light-dark-theme-div.jsp"/>
+
 <script>
 
     openTab(document.getElementById("account-btn"));
