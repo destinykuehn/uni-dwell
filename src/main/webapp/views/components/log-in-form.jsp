@@ -1,5 +1,6 @@
-<form autocomplete="off" id="log-in-form">
-    <% if (request.getParameter("loginError") != null) { %>
+<form autocomplete="off" id="log-in-form" action="AccountServlet" method="POST">
+    <% System.out.println(request.getAttribute("loginError"));%>
+    <% if (request.getAttribute("loginError") != null) { %>
         <p class="error span-3">The email or password was incorrect.</p>
     <%}%>
     <input type="hidden" name="action" value="log-in">
@@ -9,11 +10,11 @@
     </div>
     <div class="span-3">
         <label>Email</label>
-        <input type="email" name="email" maxlength="30">
+        <input type="email" name="email" maxlength="30" required>
     </div>
     <div class="span-3 password">
         <label>Password</label>
-        <input id="log-in-password" type="password" name="password" maxlength="20">
+        <input id="log-in-password" type="password" name="password" maxlength="20" required>
         <i id="log-in-eye-closed"
            onclick="hidePassword('log-in-')"
            class="fa-solid fa-eye"></i>
