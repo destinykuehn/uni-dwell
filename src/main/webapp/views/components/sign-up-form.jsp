@@ -1,5 +1,5 @@
-<form autocomplete="off" id="sign-up-form">
-    <% if (request.getParameter("invalidPassword") != null) { %>
+<form autocomplete="off" id="sign-up-form" action="AccountServlet" method="POST">
+    <% if (request.getAttribute("invalidPassword") != null) { %>
         <p class="error span-3">The password did not meet the necessary standards. Please try again.</p>
     <%}%>
     <input type="hidden" name="action" value="sign-in">
@@ -9,11 +9,11 @@
     </div>
     <div>
         <label>First Name</label>
-        <input type="text" name="firstName" maxlength="20">
+        <input type="text" name="firstName" maxlength="20" required>
     </div>
     <div>
         <label>Last Name</label>
-        <input type="text" name="lastName" maxlength="20">
+        <input type="text" name="lastName" maxlength="20" required>
     </div>
     <div class="role">
         <label>Role</label>
@@ -24,7 +24,7 @@
     </div>
     <div class="span-3">
         <label>Email</label>
-        <input type="email" name="email" maxlength="30">
+        <input type="email" name="email" maxlength="30" required>
     </div>
     <div class="span-3 password">
         <div id="password-help">
@@ -40,7 +40,7 @@
             <i onmouseenter="showPasswordHelp()"
                onmouseleave="hidePasswordHelp()"
                class="fa-regular fa-circle-question"></i></label>
-        <input id="sign-up-password" type="password" name="password" maxlength="20">
+        <input id="sign-up-password" type="password" name="password" maxlength="20" required>
         <i id="sign-up-eye-closed"
            onclick="hidePassword('sign-up-')"
            class="fa-solid fa-eye"></i>
