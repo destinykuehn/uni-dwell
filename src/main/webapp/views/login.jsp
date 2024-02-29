@@ -9,92 +9,76 @@
     <title>Uni Dwell: Login</title>
 </head>
 <body>
-<!-- sign up form -->
-<div id="sign-up-container">
 
-    <!-- left side: sign up -->
-    <div id="sign-up-left" class="col-size">
-        <div class="logo flex-row">
-            <img src="images/uni-dwell-tmp-logo.png">
-<%--            <p>Uni Dwell</p>--%>
-        </div>
-        <div class="flex-col">
-            <p>Welcome to</p>
-            <h2>Uni Dwell</h2>
-        </div>
-        <form autocomplete="off" class="flex-col" action="AccountServlet" method="POST">
-            <div class="flex-col">
-                <p class="label">Email</p>
-                <input type="email" name="sign-up-email" required>
-            </div>
-            <div class="flex-col">
-                <p class="label">Password</p>
-                <input type="password" name="sign-up-password" required>
-            </div>
-            <div class="remember-forget flex-row">
-                <label>
-                    <input type="checkbox">
-                    <span class="c1"></span>
-                    Remember me
-                </label>
-                <a href="#">Forgot Password?</a>
-            </div>
-            <input type="submit" value="SIGN UP">
-        </form>
-        <p class="center">Already have an account? <a href="#">Log in</a></p>
-        <div class="flex-row help-links">
-            <p class="center"><a href="#">FAQ</a> | <a href="#">Features</a> | <a href="#">Support</a></p>
+<div id="main-container" class="container">
+    <div class="form-container">
+        <jsp:include page="components/log-in-form.jsp"/>
+        <jsp:include page="components/sign-up-form.jsp"/>
+        <div class="help-links">
+            <a href="#">About</a>
+            <a href="#">Features</a>
+            <a href="#">Contact</a>
         </div>
     </div>
 
-    <!-- right side: about blurb -->
-    <div id="sign-up-right" class="col-size">
-        <h4>About Uni Dwell</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-            enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.</p>
-        <p class="about-link">Want to learn more? Visit our <a href="about.jsp">about</a> page.</p>
-        <h4 class="second">Features</h4>
-        <ul>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-        </ul>
-    </div>
 </div>
-
-<div id="theme-container"
-     onmouseenter="themeHover()"
-     onmouseleave="themeLeft()"
-     onclick="changeTheme()">
-    <i class="fa-solid fa-lightbulb" id="light"></i>
-    <i class="fa-solid fa-moon" id="dark"></i>
-</div>
-
 
 <script>
-    function changeTheme() {
-
+    function switchForm(to) {
+        const logIn = document.getElementById("log-in-form")
+        const signUp = document.getElementById("sign-up-form");
+        if (to === "sign-up") {
+            logIn.style.transform = "translate(-50%, -500%)";
+            signUp.style.transform = "translate(-50%, -50%)";
+        }
+        else {
+            logIn.style.transform = "";
+            signUp.style.transform = "";
+        }
+        clearInputs(document.getElementById("main-container"))
     }
 
-    function themeHover() {
-        let lightEle = document.getElementById("light");
-        let darkEle = document.getElementById("dark");
-        let color = "#003e9f";
-
-        lightEle.style.display !== "none" ? lightEle.style.color = color : darkEle.style.color = color;
+    function clearInputs(container) {
+        const children = container.children;
+        for (let i = 0; i < children.length; i++) {
+            const child = children[i];
+            if (child.tagName === 'INPUT' && child.type !== 'submit') {
+                child.value = '';
+            }
+            if (child.children.length > 0) {
+                clearInputs(child);
+            }
+        }
     }
 
-    function themeLeft() {
-        let lightEle = document.getElementById("light");
-        let darkEle = document.getElementById("dark");
-        let color = "black";
+    function showPasswordHelp() {
+        const pswdHelp = document.getElementById("password-help");
+        pswdHelp.style.display = "block";
+    }
 
-        lightEle.style.display !== "none" ? lightEle.style.color = color : darkEle.style.color = color;
+    function hidePasswordHelp() {
+        const pswdHelp = document.getElementById("password-help");
+        pswdHelp.style.display = "";
+    }
+
+    function showPassword(which) {
+        let id = (which === "sign-up-") ? "sign-up-password" : "log-in-password";
+        const pswdEle = document.getElementById(id);
+        pswdEle.type = 'text';
+
+        document.getElementById(which + "eye-open").style.display = "none";
+        document.getElementById(which + "eye-closed").style.display = "block";
+    }
+
+    function hidePassword(which) {
+        let id = (which === "sign-up-") ? "sign-up-password" : "log-in-password";
+        const pswdEle = document.getElementById(id);
+        pswdEle.type = 'password';
+
+        document.getElementById(which + "eye-open").style.display = "";
+        document.getElementById(which + "eye-closed").style.display = "";
     }
 </script>
+
 </body>
 </html>
