@@ -1,4 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Marhey:wght@300..700&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Sofia&family=Style+Script&display=swap');
+
+:root {
+    --accent: 0;
+    --foreground: 0;
+    --background: 0;
+    --text-color: 0;
+}
+
+
 * {
     padding: 0;
     margin: 0;
@@ -33,6 +42,35 @@ h4 {
 
 a {
     text-decoration: none;
+    cursor: pointer;
+}
+
+p a {
+    cursor: pointer;
+}
+
+.label, label {
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 12px;
+    margin-bottom: 0.5rem;
+}
+
+input, select {
+    padding: 0.3rem 0.3rem;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+select:focus {
+    outline: none; /* Disable the default blue border */
+}
+
+input[type="submit"] {
+    cursor: pointer;
 }
 
 #theme-container {
@@ -47,16 +85,13 @@ a {
     place-items: center;
     place-content: center;
     box-shadow: rgba(0, 0, 0, 0.2) 0 0 1rem;
-}
-
-.fa-sun, .fa-moon {
-    color: black;
-    font-size: 1.5rem;
     cursor: pointer;
 }
 
-.fa-sun:hover, .fa-moon:hover {
-    color: #003e9f;
+.fa-lightbulb, .fa-moon {
+    color: black;
+    font-size: 1.5rem;
+    /*cursor: pointer;*/
 }
 
 .fa-moon {

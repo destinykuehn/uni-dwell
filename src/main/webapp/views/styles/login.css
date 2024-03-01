@@ -1,137 +1,130 @@
 body {
-    /*background-color: #4059e3;*/
     background-image: url("../images/login-bg.jpeg");
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-position: bottom;
+    background-position: top;
     background-size: cover;
 }
 
-h2 {
-    /*color: rgba(0, 0, 0, 0.8);*/
-}
-
-.label {
-    color: rgba(0, 0, 0, 0.3);
-    margin: 1rem 0 0.5rem;
-}
-
-.remember-forget label {
-    color: rgba(0, 0, 0, 0.3);
-}
-
-.label,
-.remember-forget label,
-.remember-forget a {
-    font-size: 12px;
-}
-
-#sign-up-container {
-    /* size */
-    width: 65%;
-    height: 80%;
-
-    /* layout */
-    display: grid;
-    place-items: center;
-    grid-template-columns: 1fr 1fr;
-
-    /* appearance */
-    background-color: white;
+.container {
+    width: clamp(35%, 35%, 35%);
+    height: clamp(70%, 70%, 95%);
+    background-color: #00002d;
     border-radius: 10px;
-    /*box-shadow: white 0 0 1rem;*/
-
-    color: black;
-}
-
-.col-size {
-    /* size */
-    width: 55%;
-    height: 80%;
+    /*box-shadow: rgba(255, 255, 255, 0.5) 0 0 1rem;*/
+    box-shadow: rgba(0, 0, 0, 0.5) 0 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
     position: relative;
-}
-
-#sign-up-left {
-    /*background-color: green;*/
-    justify-content: space-between;
     padding: 1rem;
+    overflow: hidden;
 }
 
-#sign-up-right {
-    /*background-color: red;*/
-}
-
-#sign-up-left, #sign-up-right {
-    display: flex;
-    flex-direction: column;
-    /*place-items: start;*/
-}
-
-#sign-up-left div {
-    width: 100%;
-    height: fit-content;
-}
-
-#sign-up-left form {
-    width: 100%;
-    height: 50%;
-    place-content: space-evenly;
-    /*height: 100%;*/
-    /*background-color: orange;*/
-}
-
-.flex-row {
-    display: flex;
-}
-
-.flex-col {
-    display: flex;
-    flex-direction: column;
-    place-items: start;
-}
-
-.logo {
-    /*place-items: center;*/
-    place-content: center;
-    /*height: 20px;*/
-    /*background-color: purple;*/
-}
-
-.logo img {
-    height: 40px;
-    width: auto;
-    object-fit: contain;
-}
-
-.remember-forget {
-    /* size */
+.form-container {
     width: 100%;
     height: 100%;
-    /*background-color: yellow;*/
-
-    /* layout */
-    /*display: flex;*/
-    justify-content: space-between;
-    place-items: center;
-    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5fr 1fr;
 }
 
-.remember-forget label {
+form {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-height: 100%;
+    display: grid;
+    grid-template-columns: 3fr 3fr 1fr;
+    gap: 0.5rem;
+    color: white;
+    place-items: center;
+    place-content: center;
+    transition: transform 0.5s ease;
+}
+
+form > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#sign-up-form {
+    transform: translate(-50%, -200%);
+}
+
+.span-3 {
+    grid-column: span 3;
+}
+
+.message {
+    place-content: center;
+    place-items: center;
+}
+
+label {
+    place-self: start;
+    color: white;
+}
+
+.fa-circle-question {
+    font-size: 0.75rem;
     cursor: pointer;
+}
+
+.password {
     position: relative;
 }
 
-form input[type="email"],
-form input[type="password"] {
-    width: 100%;
-    padding: 0.5rem 0.5rem;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+#password-help {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    background-color: #e51b8f;
+    padding: 0.5rem;
+    transform: translate(-50%, 0);
+    display: none;
 }
 
-form input[type="checkbox"] {
-    width: 10px;
-    height: 10px;
+#password-help ul li {
+    margin-left: 1.5rem;
+}
+
+.fa-eye, .fa-eye-slash {
+    position: absolute;
+    bottom: 10%;
+    right: 2%;
+    font-size: 1.25rem;
+    cursor: pointer;
+    /*top: 50%;*/
+}
+
+#sign-up-eye-closed,
+#log-in-eye-closed{
+    display: none;
+}
+
+.check {
+    margin: 0.5rem 0 0 0;
+    cursor: pointer;
+}
+
+input, select {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding-left: 0.5rem;
+}
+
+input[type="checkbox"] {
+    margin-right: 0.5rem;
+    width: 0.25rem;
+    height: 0.25rem;
     border-radius: 100%;
     appearance: none;
     -webkit-appearance: none;
@@ -140,81 +133,47 @@ form input[type="checkbox"] {
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.c1 {
-    position: absolute;
-    top: 4.5px;
-    left: 2.5px;
-    height: 5px;
-    width: 5px;
-    border-radius: 100%;
-    background-color: white;
-}
-
 form input[type="checkbox"]:checked {
-    background-color: #003e9f;
+    background-color: #990045;
 }
 
-form input[type="submit"] {
-    width: 100%;
-    padding: 0.5rem 0;
-    background-color: #003e9f;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 1.5rem;
-    box-shadow: rgba(0, 0, 0, 0.2) 0 1rem 2rem;
-    transition: 0.3s;
+input[type="submit"] {
+    width: 50%;
+    background-color: #990045;
 }
 
-form input[type="submit"]:hover {
-    color: #003e9f;
-    background-color: white;
+label a {
+    font-size: 1rem;
+    color: #990045;
+    font-weight: bold;
 }
 
-.center {
+.switch {
     place-self: center;
-    /*background-color: purple;*/
-}
-
-.center {
-    color: rgba(0, 0, 0, 0.7);
-}
-
-.center, .center a {
-    font-size: 13px;
 }
 
 .help-links {
-    /*width: 100%;*/
-    /*background-color: #b3bdd3;*/
-    place-content: center;
+    font-size: 1rem;
+    display: flex;
+    place-items: center;
+    justify-content: space-evenly;
+    width: 50%;
+    place-self: center;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
-.help-links p, .help-links p a {
-    color: rgba(0, 0, 0, 0.5);
+.help-links a {
+    color: white;
+    border-bottom: 1px solid #990045;
 }
 
-#sign-up-right {
-    width: 80%;
+.error {
+    background-color: darkred;
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 0.5rem;
 }
 
-#sign-up-right h4 {
-    margin-bottom: 1rem;
-}
-
-.second {
-    margin-top: 1.25rem;
-}
-
-.about-link {
-    margin-top: 0.5rem;
-}
-
-#sign-up-right ul {
-    margin-left: 1.5rem;
-}
-
-#sign-up-right ul li {
-    margin-bottom: 0.5rem;
-}
