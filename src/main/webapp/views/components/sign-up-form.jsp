@@ -2,7 +2,7 @@
     <% if (request.getAttribute("invalidPassword") != null) { %>
         <p class="error span-3">The password did not meet the necessary standards. Please try again.</p>
     <%}%>
-    <input type="hidden" name="action" value="sign-up">
+    <input type="hidden" name="userAction" value="signUp">
     <div class="span-3 message">
         <p>Welcome to</p>
         <h2>Uni Dwell</h2>
