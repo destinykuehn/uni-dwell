@@ -3,7 +3,7 @@
     <% if (request.getAttribute("loginError") != null) { %>
         <p class="error span-3">The email or password was incorrect.</p>
     <%}%>
-    <input type="hidden" name="action" value="log-in">
+    <input type="hidden" name="action" value="logIn">
     <div class="span-3 message">
         <p>Hey there!</p>
         <h2>Welcome Back</h2>
