@@ -1,58 +1,103 @@
-.container {
-    width: 97%;
-    height: 95%;
-    /*background-color: red;*/
-    display: flex;
+body {
+    /*background-color: #d60b96;*/
+    /*background: transparent;*/
+    flex-direction: row;
     place-items: center;
     /*place-content: center;*/
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     grid-template-columns: 20% 80%;
-    /*padding: 1rem;*/
+    overflow: scroll;
+}
+
+/* filters */
+
+label {
+    color: white;
+}
+
+input, select {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .filters-container {
-    background-color: #e5e9ec;
+    background-color: #00002d;
+    color: white;
     width: 20%;
+    max-height: 100%;
+    /*padding-top: ;*/
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    place-items: center;
+    overflow: scroll;
+    /*box-shadow: rgba(0, 0, 0, 0.5) 0 0 1rem;*/
+}
+
+.filters-container > * {
+    /*background-color: red;*/
+}
+
+.filters-container > h2 {
+    margin-top: 2rem;
+}
+
+.filters-container > div {
+    width: 80%;
     display: flex;
     flex-direction: column;
 }
 
-.filter-header {
+.filters-container > button {
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    width: 80%;
+    background-color: #990045;
+    cursor: pointer;
+    color: white;
+    margin: 1rem 0;
+}
+
+.prices {
     display: flex;
     place-items: center;
     justify-content: space-between;
 }
 
-.property-type {
-    display: flex;
-    flex-direction: column;
+.prices select {
+    width: 40%;
 }
 
-.price-range {
-    display: flex;
-    flex-direction: column;
-}
 
-.map-container {
-    background-color: #e5e9ec;
-    width: 79%;
-}
+
+
+
+
+
+
+
+
+    /* map */
 
 .filters-container,
 .map-container {
     height: 100%;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
 }
 
 .map-container {
     position: relative;
+    overflow: hidden;
+    width: 80%;
     /*overflow: scroll;*/
 }
 
 #map {
     width: 100%;
     height: 100%;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     /*border: 2px solid black;*/
 }
 
@@ -61,21 +106,24 @@
 }
 
 .listings-container {
+    /*padding: 0.75rem;*/
     max-height: 100%;
     /*padding: 1rem;*/
-    /*background-color: blue;*/
+    background: transparent;
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 0;
+    transform: translate(0, -50%);
     display: grid;
     grid-template-columns: minmax(auto, 300px);
     grid-auto-rows: minmax(auto, 300px);
     gap: 1rem;
     overflow: scroll;
+    color: white;
 }
 
 .listings-container > div {
-    background-color: white;
+    background-color: #00002d;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.2);
     display: grid;
@@ -144,5 +192,5 @@
 
 .address label {
     cursor: pointer;
-    color: blue;
+    color: #990045;
 }

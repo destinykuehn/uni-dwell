@@ -11,51 +11,75 @@
 </head>
 <body>
 
-<div class="container">
+
     <div class="filters-container">
-        <div class="filter-header">
-            <h3>Filters</h3>
-            <i class="fa-solid fa-chevron-left"></i>
-        </div>
-        <div class="property-type">
+        <h2>Filters</h2>
+        <div>
             <label>Property Type</label>
-            <div>
-                <i class="fa-solid fa-house"></i>
-                <i class="fa-solid fa-bed"></i>
-            </div>
+            <select>
+                <option value="house">House</option>
+                <option value="room">Room</option>
+            </select>
         </div>
-        <div class="rental-period">
-            <label>Rental period</label>
-            <div>
-                <div>
-                    <button>All</button>
-                    <button>Semester</button>
-                    <button>Year</button>
-                </div>
-            </div>
+        <div>
+            <label>Rental Period</label>
+            <select>
+                <option value="all">All</option>
+                <option value="semester">Semester</option>
+                <option value="year">Year-Round</option>
+            </select>
         </div>
-        <div class="price-range">
+        <div>
             <label>Price Range</label>
-            <input type="range">
+            <div class="prices">
+                <select>
+                    <option value="all">All</option>
+                    <option value="semester">Semester</option>
+                    <option value="year">Year-Round</option>
+                </select>
+                <p> to </p>
+                <select>
+                    <option value="all">All</option>
+                    <option value="semester">Semester</option>
+                    <option value="year">Year-Round</option>
+                </select>
+            </div>
         </div>
-        <div class="price-range">
+        <div>
             <label>Bedrooms</label>
-            <input type="range">
+            <select>
+                <option value=1+">1+</option>
+                <option value="2+">2+</option>
+                <option value="3+">3+</option>
+                <option value="4+">4+</option>
+                <option value="5+">5+</option>
+            </select>
         </div>
-        <div class="price-range">
+        <div>
             <label>Bathrooms</label>
-            <input type="range">
+            <select>
+                <option value=1+">1+</option>
+                <option value="2+">2+</option>
+                <option value="3+">3+</option>
+                <option value="4+">4+</option>
+                <option value="5+">5+</option>
+            </select>
         </div>
-        <div class="price-range">
-            <label>Square Feet</label>
-            <input type="range">
+        <div>
+            <label>Size (sqft)</label>
+            <select>
+                <option value=500+">500+</option>
+                <option value="1000+">1000+</option>
+                <option value="1500+">1500+</option>
+                <option value="2000+">2000+</option>
+                <option value="2500+">2500+</option>
+            </select>
         </div>
-        <div class="price-range">
+        <div>
             <label>Additional Tags</label>
             <input type="text">
         </div>
         <button>Apply Filters</button>
-
     </div>
 
     <div class="map-container">
@@ -63,7 +87,7 @@
         <jsp:include page="components/map-listings-div.jsp"/>
     </div>
 
-</div>
+
 
 <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV7tfcU55KcXBpnyNLv7e15vlWM6K2WQE&loading=async&callback=initMap">
@@ -86,20 +110,19 @@
             new google.maps.LatLng(34.02276502506655, -106.94102989126084), // Southwest corner
             new google.maps.LatLng(34.09955905027666, -106.86601387666968)  // Northeast corner
         );
-        var mapStyle = [
-            {
-                featureType: 'poi',
-                elementType: 'labels',
-                stylers: [{ visibility: 'off' }]
-            }
-        ];
+        // var mapStyle = [
+        //     {
+        //         featureType: 'poi',
+        //         elementType: 'labels',
+        //         stylers: [{ visibility: 'off' }]
+        //     }
+        // ];
 
             // The map, centered at Uluru
         map = new Map(document.getElementById("map"), {
             zoom: 13,
             center: position,
-            mapId: "b615488547e0b44a",
-            styles: mapStyle,
+            mapId: "ffc8ae760a796c6b",
             // fullscreenControl: false,
             // streetViewControl: false,
             // zoomControlOptions: {
