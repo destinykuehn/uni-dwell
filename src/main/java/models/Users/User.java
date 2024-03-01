@@ -10,8 +10,7 @@ public class User implements Serializable {
     private String profilePic;
     private String firstName;
     private String lastName;
-    private String username;
-    private String password;
+    private String email;
     private Reputation reputation;
     private ArrayList<Review> reviewList;
     protected Role role;
@@ -66,6 +65,13 @@ public class User implements Serializable {
         this.chat = new Chat();
     }
 
+    public User(String email, String firstName, String lastName, Role role) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.role = role;
+    }
+
     public Role getRole() {
         return this.role;
     }
@@ -94,20 +100,12 @@ public class User implements Serializable {
         return this.lastName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String username) {
+        this.email = username;
     }
 
-    public String getUsername() {
-        return this.username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPassword() {
-        return this.password;
+    public String getEmail() {
+        return this.email;
     }
 
     public void setReputation(Reputation reputation) {

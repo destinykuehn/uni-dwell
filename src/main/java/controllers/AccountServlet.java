@@ -7,8 +7,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import models.Users.User;
+import models.utils.Serializer;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.sql.*;
+import java.util.Map;
+import java.util.Objects;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,7 +25,7 @@ public class AccountServlet extends HttpServlet {
     /* Exception logger */
     private static final Logger logger = Logger.getLogger(IndexServlet.class.getName());
 
-    private static boolean verbose = true;
+    private static final boolean verbose = true;
 
     public AccountServlet() {
         super();
@@ -29,14 +35,10 @@ public class AccountServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) {
         try {
             System.out.printf("Hello from %s%n", this.getClass().getName());
-            if (req.getParameter("sign-up-email") != null && req.getParameter("sign-up-password") != null) {
-                if (verbose) System.out.println("Sign up attempted");
-                int res = handleSignUp(req, resp);
-                if (res != 0) System.out.println("Rejected sign up");
-            } else if (req.getParameter("sign-in-email") != null && req.getParameter("sign-in-password") != null) {
-                if (verbose) System.out.println("Sign in attempted");
-                int res = handleSignIn(req, resp);
-                if (res != 0) System.out.println("Rejected sign in");
+            if (Objects.equals(req.getParameter("action"), "logIn")) {
+                handleSignIn(req, resp);
+            } else if (Objects.equals(req.getParameter("userAction"), "signUp")) {
+                handleSignUp(req, resp);
             }
         } catch (Exception e) {
             handleException(e);
@@ -50,17 +52,21 @@ public class AccountServlet extends HttpServlet {
         logger.throwing(ExampleServlet.class.getName(), "methodName", e);
     }
 
-    private int handleSignIn(HttpServletRequest req, HttpServletResponse resp) {
+    private int handleSignIn(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
+        User user = retrieveUserFromDB(req);
+        if (checkCredentials(req)) {
+            System.out.println("Valid credentials");
+        } else {
+            System.out.println("Invalid username or password");
+        }
+        System.out.println(user.getFirstName());
         return 0;
     }
 
-    private int handleSignUp(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String sign_up_email = req.getParameter("sign-up-email");
-        String sign_up_pass = req.getParameter("sign-up-password");
-        if (verbose) {
-            System.out.printf("Email: %s\n", sign_up_email);
-            System.out.printf("Pass: %s\n", sign_up_pass);
-        }
+    private int handleSignUp(HttpServletRequest req, HttpServletResponse resp) throws IOException, SQLException {
+        if (verbose) printParameters(req.getParameterMap());
+        String sign_up_email = req.getParameter("email");
+        String sign_up_pass = req.getParameter("password");
         if (!checkPasswordValid(sign_up_pass)) {
             if (verbose) System.out.println("Invalid password. Rejecting sign up...");
             return 1;
@@ -70,12 +76,15 @@ public class AccountServlet extends HttpServlet {
             return 1;
         }
         if (verbose) System.out.println("Valid email and password. Proceeding with sign in...");
-        String hash_pw = Hasher.hash(sign_up_pass);
         if (isUserInDB(sign_up_email) == 0) {
             System.out.println("User in database");
         } else {
             System.out.println("User not in database");
         }
+        User user = createUser(req);
+        if (user == null) {System.out.println("Error in user creation"); return 1;}
+        String hashPW = Hasher.hash(sign_up_pass);
+        insertUserIntoDB(user, hashPW);
         createSession(req, resp);
         return 0;
     }
@@ -88,7 +97,7 @@ public class AccountServlet extends HttpServlet {
 
     private boolean checkPasswordValid(String password) {
         return (containsDigit(password) && containsSpecial(password)
-                && containsUpper(password) && password.length() <= 20);
+                && containsUpper(password) && password.length() <= 20 && password.length() >= 8);
     }
 
     private boolean containsDigit(String pw) {
@@ -131,7 +140,25 @@ public class AccountServlet extends HttpServlet {
         return DatabaseServlet.accessDatabase("admin", "Users", "email", email, "find");
     }
 
-    private int insertUserIntoDB(String email, String pw) {
+    private int insertUserIntoDB(User user, String pw) throws IOException, SQLException {
+        Serializer<User> serializer = new Serializer<>();
+        ByteArrayOutputStream bytes = serializer.Serialize(user);
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(bytes.toByteArray());
+        String sql = "INSERT INTO Users (email, password, firstName, lastName, userObj) VALUES (?, ?, ?, ?, ?)";
+        String url = ("jdbc:mysql://uni-dwell-db.cpysmemiu2q3.us-east-2.rds.amazonaws.com:3306/uni-dwell");
+        String ps = "cse3026uni-dwell";
+        DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+        Connection con = DriverManager.getConnection(url, "admin", ps);
+        PreparedStatement update = con.prepareStatement(sql);
+        update.setString(1, user.getEmail());
+        update.setString(2, pw);
+        update.setString(3, user.getFirstName());
+        update.setString(4, user.getLastName());
+        update.setBlob(5, inputStream);
+        update.executeUpdate();
+        bytes.close();
+        inputStream.close();
+        con.close();
         return 0;
     }
 
@@ -142,13 +169,63 @@ public class AccountServlet extends HttpServlet {
         resp.sendRedirect("account.jsp");
     }
 
-    private boolean checkCredentials(String email, String pw) {
-        String pwHash = Hasher.hash(pw);
-        //DatabaseServlet.getUser()
-        return true;
+    private boolean checkCredentials(HttpServletRequest req) throws SQLException {
+        String hash = retrievePasswordFromDB(req);
+        String pass = req.getParameter("password");
+        return Hasher.verify_hash(pass, hash);
     }
 
-    private void createUser() {
+    private User createUser(HttpServletRequest req) {
+        User new_user = null;
+        String sign_up_email = req.getParameter("email");
+        String firstName = req.getParameter("firstName");
+        String lastName = req.getParameter("lastName");
+        String role = req.getParameter("role");
+        if (Objects.equals(role, "host")) new_user = new User(sign_up_email, firstName, lastName, User.Role.HOST);
+        if (Objects.equals(role, "student")) new_user = new User(sign_up_email, firstName, lastName, User.Role.STUDENT);
+        return new_user;
+    }
 
+    private void printParameters(Map<String, String[]> paraMap) {
+        for (String s : paraMap.keySet()) {
+            String[] vals = paraMap.get(s);
+            System.out.print(s + ": ");
+            for (String inner_s : vals) {
+                System.out.print(inner_s + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    private User retrieveUserFromDB(HttpServletRequest req) throws SQLException, IOException, ClassNotFoundException {
+        Serializer<User> serializer = new Serializer<>();
+        String sql = "SELECT userObj FROM Users WHERE email = ?";
+        String url = ("jdbc:mysql://uni-dwell-db.cpysmemiu2q3.us-east-2.rds.amazonaws.com:3306/uni-dwell");
+        String ps = "cse3026uni-dwell";
+        DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+        Connection con = DriverManager.getConnection(url, "admin", ps);
+        PreparedStatement query = con.prepareStatement(sql);
+        query.setString(1, req.getParameter("email"));
+        ResultSet res = query.executeQuery();
+        Blob bytes = null;
+        if (res.next()) {bytes = res.getBlob("userObj");}
+        User retrievedUser = serializer.Deserialize((ByteArrayInputStream) bytes.getBinaryStream());
+        con.close();
+        return retrievedUser;
+    }
+
+    private String retrievePasswordFromDB(HttpServletRequest req) throws SQLException {
+        String sql = "SELECT password FROM Users WHERE email = ?";
+        String url = ("jdbc:mysql://uni-dwell-db.cpysmemiu2q3.us-east-2.rds.amazonaws.com:3306/uni-dwell");
+        String ps = "cse3026uni-dwell";
+        DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
+        Connection con = DriverManager.getConnection(url, "admin", ps);
+        PreparedStatement query = con.prepareStatement(sql);
+        query.setString(1, req.getParameter("email"));
+        ResultSet res = query.executeQuery();
+        String pw = "";
+        if (res.next()) {pw = res.getString("password");}
+        con.close();
+        return pw;
     }
 }
