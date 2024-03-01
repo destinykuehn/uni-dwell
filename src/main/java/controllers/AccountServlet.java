@@ -1,13 +1,13 @@
 package controllers;
 
-import BCrypt_Hasher.Hasher;
+import utilities.Hasher;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import models.Users.User;
-import models.utils.Serializer;
+import utilities.Serializer;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

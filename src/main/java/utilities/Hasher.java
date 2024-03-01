@@ -1,4 +1,4 @@
-package BCrypt_Hasher;
+package utilities;
 
 import org.mindrot.jbcrypt.BCrypt;
 
