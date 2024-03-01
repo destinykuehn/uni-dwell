@@ -9,23 +9,19 @@
     <title>Uni Dwell: Login</title>
 </head>
 <body>
-
-<div id="main-container" class="container">
-    <div class="form-container">
-        <jsp:include page="components/log-in-form.jsp"/>
-        <jsp:include page="components/sign-up-form.jsp"/>
-        <div class="help-links">
-            <a href="#">About</a>
-            <a href="#">Features</a>
-            <a href="#">Contact</a>
+    <div id="main-container" class="container">
+        <div class="form-container">
+            <jsp:include page="components/log-in-form.jsp"/>
+            <jsp:include page="components/sign-up-form.jsp"/>
+            <div class="help-links">
+                <a href="#">About</a>
+                <a href="#">Features</a>
+                <a href="#">Contact</a>
+            </div>
         </div>
     </div>
-
-</div>
-<jsp:include page="components/light-dark-theme-div.jsp"/>
-
-<script src="js/global.js"></script>
-<script src="js/login.js"></script>
-
+    <jsp:include page="components/light-dark-theme-div.jsp"/>
+    <script src="js/global.js"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>

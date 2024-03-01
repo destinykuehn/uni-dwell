@@ -1,5 +1,4 @@
 body {
-    /*background-image: url("../images/light-login-bg.jpg");*/
     background-image: var(--login-bg);
     background-attachment: fixed;
     background-repeat: no-repeat;

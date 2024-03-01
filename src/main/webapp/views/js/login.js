@@ -16,7 +16,7 @@ function clearInputs(container) {
     const children = container.children;
     for (let i = 0; i < children.length; i++) {
         const child = children[i];
-        if (child.tagName === 'INPUT' && child.type !== 'submit') {
+        if (child.tagName === 'INPUT' && child.type !== 'submit' && child.type !== "hidden") {
             child.value = '';
         }
         if (child.children.length > 0) {
