@@ -1,0 +1,9 @@
+body {
+    background-color: #001220;
+    position: relative;
+    color: #fa7268;
+}
+
+nav {
+    border-bottom: 2px solid #fa7268;
+}

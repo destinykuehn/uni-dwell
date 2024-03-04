@@ -4,24 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/global.css">
-    <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/svg-bg.css">
+    <link rel="stylesheet" href="styles/about.css">
     <script src="https://cdn.jsdelivr.net/npm/kute.js@2.2.4/dist/kute.min.js"></script>
 
-    <title>Uni Dwell: Index</title>
-    <style>
-    nav {
-        border-bottom: 2px solid #fa7268;
-    }
-    </style>
+    <title>Uni Dwell: About Us</title>
 </head>
 <body>
 <!-- header -->
 <jsp:include page="components/header.jsp"/>
 <nav>
 <a href="/uni-dwell/about.jsp">About Us</a>
-<a>Freqently Asked Questions</a>
-<a>Affiliated Universities</a>
+<a href="/uni-dwell/aboutFaQ.jsp">Freqently Asked Questions</a>
+<a href="/uni-dwell/aboutUni.jsp">Affiliated Universities</a>
 </nav>
 
 
