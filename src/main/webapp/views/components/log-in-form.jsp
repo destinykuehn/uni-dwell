@@ -1,5 +1,4 @@
 <form autocomplete="off" id="log-in-form" action="AccountServlet" method="POST">
-    <% System.out.println(request.getAttribute("loginError"));%>
     <% if (request.getAttribute("loginError") != null) { %>
         <p class="error span-3">The email or password was incorrect.</p>
     <%}%>
