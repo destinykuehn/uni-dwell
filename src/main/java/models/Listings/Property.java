@@ -2,23 +2,24 @@ package models.Listings;
 
 import models.Users.User;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public abstract class Property {
+public abstract class Property implements Serializable {
 
     public enum Type {
         SINGLE_FAMILY_RESIDENCE,
         MOBILE_HOME,
         APARTMENT,
         STUDIO,
-        OTHER
+        PROPERTY_TYPE_OTHER
     }
 
     public enum PetPolicy {
         CATS,
         DOGS,
         SMALL_DOGS,
-        NONE,
+        PET_POLICY_NONE,
         CONTACT_HOST
     }
 
@@ -33,15 +34,15 @@ public abstract class Property {
         IN_UNIT,
         COMMUNAL,
         HOOKUPS,
-        NONE
+        LAUNDRY_NONE
     }
 
     public enum Cooling {
         CENTRAL_AIR,
         EVAPORATIVE_COOLING,
         CEILING_FANS,
-        OTHER,
-        NONE
+        COOLING_OTHER,
+        COOLING_NONE
     }
 
     public enum Heating {
@@ -50,8 +51,8 @@ public abstract class Property {
         BASEBOARD,
         HEAT_PUMP,
         FIREPLACE,
-        OTHER,
-        NONE
+        HEATING_OTHER,
+        HEATING_NONE
     }
 
     private int rent;
@@ -66,6 +67,8 @@ public abstract class Property {
     private Parking parking;
     private Laundry laundry;
     private int deposit;
+
+    private String name;
 
     // sets rent of property
     public void setRent(int rent) {
@@ -187,5 +190,13 @@ public abstract class Property {
     // returns deposit for property
     public int getDeposit() {
         return this.deposit;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName(){
+        return this.name;
     }
 }

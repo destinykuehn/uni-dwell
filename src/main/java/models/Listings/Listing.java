@@ -3,9 +3,10 @@ package models.Listings;
 import models.Users.Review;
 import models.Users.User;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Listing extends Property {
+public class Listing extends Property implements Serializable {
     private House house;
     private boolean isHouse;
     private boolean isRoom;
@@ -13,6 +14,8 @@ public class Listing extends Property {
     private boolean visible = true;
     private ArrayList<User> favoriteByList;
     private ArrayList<Review> reviewList;
+
+    private String listingName;
 
     public Listing() {
 
@@ -92,5 +95,13 @@ public class Listing extends Property {
 
     public void removeReview(Review review) {
         this.reviewList.remove(review);
+    }
+
+    public void setListingName(String name) {
+        this.listingName = name;
+    }
+
+    public String getListingName() {
+        return this.listingName;
     }
 }

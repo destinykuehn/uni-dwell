@@ -2,14 +2,17 @@ package models.Listings;
 
 import models.Errors.CustomException;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
 //public class House extends Property implements Space {
-public class House {
+public class House implements Serializable {
     private int lotSize;
     private int houseSize;
     private ArrayList<Room> roomList;
+
+    private String name;
 
     public House(){
         this.roomList = new ArrayList<Room>();
@@ -95,6 +98,14 @@ public class House {
 
     public int getHouseSize() {
         return this.houseSize;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName(){
+        return this.name;
     }
 
 }
