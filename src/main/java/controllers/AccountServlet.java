@@ -1,5 +1,6 @@
 package controllers;
 
+import jakarta.servlet.ServletException;
 import utilities.Hasher;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -34,10 +35,11 @@ public class AccountServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) {
         try {
+            printParameters(req.getParameterMap());
             System.out.printf("Hello from %s%n", this.getClass().getName());
             if (Objects.equals(req.getParameter("action"), "logIn")) {
                 handleSignIn(req, resp);
-            } else if (Objects.equals(req.getParameter("userAction"), "signUp")) {
+            } else if (Objects.equals(req.getParameter("action"), "sign-up")) {
                 handleSignUp(req, resp);
             }
         } catch (Exception e) {
@@ -52,23 +54,28 @@ public class AccountServlet extends HttpServlet {
         logger.throwing(ExampleServlet.class.getName(), "methodName", e);
     }
 
-    private int handleSignIn(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException {
-        User user = retrieveUserFromDB(req);
+    private int handleSignIn(HttpServletRequest req, HttpServletResponse resp) throws SQLException, IOException, ClassNotFoundException, ServletException {
         if (checkCredentials(req)) {
             System.out.println("Valid credentials");
         } else {
             System.out.println("Invalid username or password");
+            req.setAttribute("loginError", "");
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
+            return 1;
         }
+        User user = retrieveUserFromDB(req);
         System.out.println(user.getFirstName());
         return 0;
     }
 
-    private int handleSignUp(HttpServletRequest req, HttpServletResponse resp) throws IOException, SQLException {
+    private int handleSignUp(HttpServletRequest req, HttpServletResponse resp) throws IOException, SQLException, ServletException {
         if (verbose) printParameters(req.getParameterMap());
         String sign_up_email = req.getParameter("email");
         String sign_up_pass = req.getParameter("password");
         if (!checkPasswordValid(sign_up_pass)) {
             if (verbose) System.out.println("Invalid password. Rejecting sign up...");
+            req.setAttribute("invalidPassword", "");
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
             return 1;
         }
         if (!checkEmailValid(sign_up_email)) {
@@ -77,7 +84,8 @@ public class AccountServlet extends HttpServlet {
         }
         if (verbose) System.out.println("Valid email and password. Proceeding with sign in...");
         if (isUserInDB(sign_up_email) == 0) {
-            System.out.println("User in database");
+            System.out.println("User with that email in database already");
+            return 1;
         } else {
             System.out.println("User not in database");
         }
@@ -143,7 +151,7 @@ public class AccountServlet extends HttpServlet {
     private int insertUserIntoDB(User user, String pw) throws IOException, SQLException {
         Serializer<User> serializer = new Serializer<>();
         ByteArrayOutputStream bytes = serializer.Serialize(user);
-        ByteArrayInputStream inputStream = new ByteArrayInputStream(bytes.toByteArray());
+        var inputStream = serializer.outputStreamToInputStream(bytes);
         String sql = "INSERT INTO Users (email, password, firstName, lastName, userObj) VALUES (?, ?, ?, ?, ?)";
         String url = ("jdbc:mysql://uni-dwell-db.cpysmemiu2q3.us-east-2.rds.amazonaws.com:3306/uni-dwell");
         String ps = "cse3026uni-dwell";
@@ -156,8 +164,8 @@ public class AccountServlet extends HttpServlet {
         update.setString(4, user.getLastName());
         update.setBlob(5, inputStream);
         update.executeUpdate();
-        bytes.close();
         inputStream.close();
+        bytes.close();
         con.close();
         return 0;
     }
@@ -209,7 +217,9 @@ public class AccountServlet extends HttpServlet {
         ResultSet res = query.executeQuery();
         Blob bytes = null;
         if (res.next()) {bytes = res.getBlob("userObj");}
+        assert bytes != null;
         User retrievedUser = serializer.Deserialize((ByteArrayInputStream) bytes.getBinaryStream());
+        bytes.free();
         con.close();
         return retrievedUser;
     }
