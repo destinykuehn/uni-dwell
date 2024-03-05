@@ -3,28 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/login.css">
+    <script src="https://kit.fontawesome.com/2db75599be.js" crossorigin="anonymous"></script>
     <title>Uni Dwell: Login</title>
 </head>
 <body>
-<p>Log In</p>
-<form autocomplete="off" action="AccountServlet" method="POST">
-    <div>
-        <input type="hidden" name="which" value="log-in">
-        <input type="text" name="email" placeholder="Enter email...">
-        <input type="text" name="password" placeholder="Enter password...">
+    <div id="main-container" class="container">
+        <div class="form-container">
+            <jsp:include page="components/log-in-form.jsp"/>
+            <jsp:include page="components/sign-up-form.jsp"/>
+            <div class="help-links">
+                <a href="#">About</a>
+                <a href="#">Features</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
     </div>
-    <input type="submit" value="Login">
-</form>
 
-<p>Sign Up</p>
-<form autocomplete="off" action="AccountServlet" method="POST">
-    <div>
-        <input type="hidden" name="which" value="sign-up">
-        <input type="text" name="email" placeholder="Enter email...">
-        <input type="text" name="password" placeholder="Enter password...">
-    </div>
-    <input type="submit" value="Sign Up">
-</form>
+    <jsp:include page="components/header.jsp"/>
 
+    <script src="js/global.js"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>

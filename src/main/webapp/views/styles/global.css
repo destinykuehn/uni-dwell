@@ -1,14 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Marhey:wght@300..700&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Sofia&family=Style+Script&display=swap');
+
 * {
     padding: 0;
     margin: 0;
+    font-family: "Quicksand", sans-serif;
+    font-size: 15px;
 }
 
 body {
     width: 100vw;
-    min-height: 100svh;
-    overflow: scroll;
+    height: 100svh;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     place-content: center;
     place-items: center;
+    position: relative;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 15%;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    grid-template-columns: 1fr;
+    transition: height 0.5s ease;
+}
+
+.header-first-row {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    transition: height 0.5s ease;
+    background-color: var(--header-color);
+    box-shadow: black 0 0 1rem;
+}
+
+.header-second-row {
+    width: 100%;
+    /*background-color: #9FFF36;*/
+    height: 100%;
+    display: flex;
+    /*place-items: end;*/
+    place-content: end;
+    background: transparent;
+}
+
+.header-logo {
+    color: var(--text-color);
+    width: 50%;
+    height: 100%;
+    place-self: start;
+    /*background-color: #00b0fa;*/
+    display: flex;
+    place-items: center;
+    justify-content: space-evenly;
+}
+
+header nav {
+    width: 100%;
+    height: 100%;
+    /*background-color: bisque;*/
+    display: flex;
+    place-items: center;
+    justify-content: space-evenly;
+}
+
+header nav a {
+    color: var(--header-nav-color);
+}
+
+.theme-account {
+    color: var(--text-color);
+    width: 50%;
+    height: 100%;
+    /*background-color: red;*/
+    place-self: end;
+    display: flex;
+    place-items: center;
+    justify-content: space-evenly;
+}
+
+.fa-circle-user {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.header-drop {
+    padding: 0 1rem;
+    width: fit-content;
+    height: 100%;
+    place-self: end;
+    background-color: var(--header-color);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    cursor: pointer;
+    box-shadow: black 0 1.5rem 1rem;
+    /*transition: all 0.5s ease;*/
+}
+
+.header-drop i {
+    color: var(--header-nav-color);
+    font-size: 2rem;
+}
+
+#header-down-arrow {
+    display: none;
+    /*display: ;*/
+}
+
+
+h2 {
+    font-family: "Style Script", cursive;
+    font-size: 3rem;
+}
+
+h4 {
+    /*font-family: "Raleway", sans-serif;*/
+    font-size: 20px;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+p a {
+    cursor: pointer;
+}
+
+.label, label {
+    color: var(--label-color);
+    font-size: 12px;
+    margin-bottom: 0.5rem;
+}
+
+input, select {
+    padding: 0.3rem 0.3rem;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: var(--input-bg-color);
+    color: var(--text-color);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+select:focus {
+    outline: none; /* Disable the default blue border */
+}
+
+input[type="submit"] {
+    cursor: pointer;
+}
+
+#theme-container {
+    background-color: white;
+    border-radius: 100%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 1rem;
+    cursor: pointer;
+}
+
+.fa-lightbulb, .fa-moon {
+    color: black;
+    font-size: 1.5rem;
+    /*cursor: pointer;*/
+}
+
+#light {
+    display: none;
+    /*display: ;*/
+}
+
+
+
+
+
+.account-header-div {
+    top: 1%;
+    right: 0.5%;
+    position: absolute;
+    width: 20%;
+    height: 30%;
+    background-color: var(--background);
+    border-radius: 10px;
+    transform: translate(200%, 0);
+    transition: transform 0.5s ease;
+    box-shadow: black 0 0 1rem;
+}
+
+.x-container {
+    position: relative;
+}
+
+#account-header-x {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.header-account-info {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    justify-content: space-around;
 }

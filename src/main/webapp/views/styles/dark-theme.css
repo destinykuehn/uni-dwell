@@ -1,0 +1,16 @@
+:root {
+    --dark-accent: #990045;
+    --light-accent: #e51b8f;
+    --foreground: #00002d;
+    --background: #990045;
+    --text-color: white;
+    --label-color: white;
+    --button-text: white;
+    --input-bg-color: rgba(255, 255, 255, 0.5);
+    --sub-links: white;
+    --header-color: rgba(0, 0, 0, 0.8);
+    --header-nav-color: #e51b8f;
+
+    --index-bg: url("../images/dark-index-bg.jpeg");
+    --login-bg: url("../images/dark-login-bg.jpeg");
+}
