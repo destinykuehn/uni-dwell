@@ -1,8 +1,9 @@
 package models.Listings;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Room {
+public class Room implements Serializable {
     private ArrayList<String> pictureList;
     private int roomSize;
     private Type type;
@@ -15,7 +16,7 @@ public class Room {
         LIVING_ROOM,
         KITCHEN,
         OUTDOORS,
-        OTHER
+        ROOM_TYPE_OTHER
     }
 
     public Room() {
