@@ -3,8 +3,8 @@
     v: "weekly",
 });
 let map;
-async function initMap(theme) {
-    // NMT coordinates
+async function initMap() {
+    /* get school (NMT) coordinates */
     const position = {lat: 34.068978220312005, lng: -106.90560937652961};
     const { Map } = await google.maps.importLibrary("maps");
     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
@@ -12,7 +12,13 @@ async function initMap(theme) {
         new google.maps.LatLng(34.02276502506655, -106.94102989126084), // Southwest corner
         new google.maps.LatLng(34.09955905027666, -106.86601387666968)  // Northeast corner
     );
+
+    /* set map theme to match site theme */
+    let theme = getThemeCookie();
+    theme = (theme === "null") ? "dark" : theme;
     let mapId = (theme === "light") ? "b615488547e0b44a" : "ffc8ae760a796c6b"
+
+    /* create map */
     map = new Map(document.getElementById("map"), {
         zoom: 13,
         center: position,
@@ -36,4 +42,25 @@ async function initMap(theme) {
     //     position: position,
     //     title: "NMT",
     // });
+}
+
+function setCurrentListingSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+function closeSelectedListing() {
+    const ele = document.getElementById("selected-listing-container");
+    ele.style.display = "";
+}
+
+function openSelectedListing() {
+    const ele = document.getElementById("selected-listing-container");
+    ele.style.display = "flex";
+}
+
+function closeSelectedListingCarousel() {
+    document.getElementById("selected-listing-carousel-container").style.display = "";
+}
+
+function openSelectedListingCarousel() {
+    document.getElementById("selected-listing-carousel-container").style.display = "flex";
 }

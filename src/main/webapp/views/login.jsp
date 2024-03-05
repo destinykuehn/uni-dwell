@@ -20,7 +20,9 @@
             </div>
         </div>
     </div>
-    <jsp:include page="components/light-dark-theme-div.jsp"/>
+
+    <jsp:include page="components/header.jsp"/>
+
     <script src="js/global.js"></script>
     <script src="js/login.js"></script>
 </body>

@@ -10,69 +10,36 @@
 </head>
 <body>
 
-<div class="grid-container">
-
-    <!-- profile nav -->
-    <div class="left-col">
-
-        <!-- logo -->
-        <div class="logo">
-            <img src="images/uni-dwell-tmp-logo.png">
-            <h2>Uni Dwell</h2>
+    <div class="grid-container">
+        <!-- profile nav -->
+        <div class="left-col">
+            <!-- logo -->
+            <div class="logo">
+                <img src="images/uni-dwell-tmp-logo.png">
+                <h2>Uni Dwell</h2>
+            </div>
+            <!-- main nav buttons -->
+            <div class="nav-buttons">
+                <button onclick="openTab(this)" id="account-btn"><i class="fa-solid fa-user"></i>Account</button>
+                <button onclick="openTab(this)" id="listings-btn"><i class="fa-solid fa-house"></i>Listings</button>
+                <button onclick="openTab(this)" id="messages-btn"><i class="fa-solid fa-comment"></i>Messages</button>
+            </div>
         </div>
+        <!-- content -->
+        <div class="right-col">
+            <div id="messages">
 
-        <!-- main nav buttons -->
-        <div class="nav-buttons">
-            <button onclick="openTab(this)" id="account-btn"><i class="fa-solid fa-user"></i>Account</button>
-            <button onclick="openTab(this)" id="listings-btn"><i class="fa-solid fa-house"></i>Listings</button>
-            <button onclick="openTab(this)" id="messages-btn"><i class="fa-solid fa-comment"></i>Messages</button>
+            </div>
+            <jsp:include page="components/host-account-div.jsp"/>
+            <jsp:include page="components/host-listings-div.jsp"/>
+
         </div>
-
     </div>
 
-    <!-- content -->
-    <div class="right-col">
+    <jsp:include page="components/header.jsp"/>
 
-        <div id="messages">
-
-        </div>
-
-        <jsp:include page="components/host-account-div.jsp"/>
-        <jsp:include page="components/host-listings-div.jsp"/>
-
-    </div>
-</div>
-
-<jsp:include page="components/light-dark-theme-div.jsp"/>
-
-<script>
-
-    openTab(document.getElementById("account-btn"));
-
-    function openTab(button) {
-        // reset nav buttons
-        document.querySelectorAll('.nav-buttons button').forEach(button => {
-            button.style.color = '';
-            button.style.backgroundColor = '';
-        });
-
-        // set clicked button
-        button.style.color = 'white';
-        button.style.backgroundColor = '#004bb4';
-
-        openContent(button.id);
-    }
-
-    function openContent(buttonId) {
-        // hide/show profile content
-        const contentList = ["account", "listings", "messages"];
-        for (let i = 0; i < contentList.length; i++) {
-            const ele = document.getElementById(contentList[i]);
-            ele.style.transform = buttonId.includes(contentList[i]) ? '' : "translate(-50%, 100%)";
-        }
-    }
-
-</script>
+<script src="js/global.js"></script>
+<script src="js/account.js"></script>
 
 </body>
 </html>
