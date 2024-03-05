@@ -11,7 +11,7 @@
 <body>
     <jsp:include page="components/listings-filter-div.jsp"/>
     <jsp:include page="components/map-listings-div.jsp"/>
-    <jsp:include page="components/light-dark-theme-div.jsp"/>
+    <jsp:include page="components/header.jsp"/>
     <jsp:include page="components/selected-listing-div.jsp"/>
     <jsp:include page="components/selected-listing-carousel-div.jsp"/>
 

@@ -106,3 +106,42 @@ function addStyleSheet(href) {
     link.href = href;
     document.head.appendChild(link);
 }
+
+function openAccountDiv() {
+    const accountDiv = document.getElementsByClassName("account-header-div")[0];
+    accountDiv.style.transform = "translate(0, 0)";
+}
+
+function closeAccountDiv() {
+    const accountDiv = document.getElementsByClassName("account-header-div")[0];
+    accountDiv.style.transform = "";
+}
+
+function hideOrShowHeader() {
+    const upArrow = document.getElementById("header-up-arrow");
+    const downArrow = document.getElementById("header-down-arrow");
+    const header = document.getElementsByTagName("header")[0];
+    const headerFirstRow = document.getElementsByClassName("header-first-row")[0];
+    const children = headerFirstRow.children;
+
+    /* collapse header */
+    if (upArrow.style.display !== "none") {
+        console.log("in if");
+        // Loop through each child and set the font size
+        for (let i = 0; i < children.length; i++) {
+            children[i].style.display = 'none';
+        }
+        header.style.height = "5%";
+        upArrow.style.display = "none";
+        downArrow.style.display = "block";
+    }
+    /* show header */
+    else {
+        for (let i = 0; i < children.length; i++) {
+            children[i].style.display = '';
+        }
+        header.style.height = "";
+        upArrow.style.display = "";
+        downArrow.style.display = "";
+    }
+}

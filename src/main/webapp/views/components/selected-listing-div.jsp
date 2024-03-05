@@ -73,7 +73,36 @@
                     </section>
                     <section id="features">
                         <h3>Features</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <div class="features-grid">
+                            <div>
+                                <i class="fa-solid fa-house"></i><p>Type</p>
+                            </div>
+                            <p>House</p>
+                            <div>
+                                <i class="fa-solid fa-car"></i><p>Parking</p>
+                            </div>
+                            <p>Attached Garage</p>
+                            <div>
+                                <i class="fa-regular fa-snowflake"></i><p>Cooling</p>
+                            </div>
+                            <p>Central Air</p>
+                            <div>
+                                <i class="fa-solid fa-socks"></i><p>Laundry</p>
+                            </div>
+                            <p>In Unit</p>
+                            <div>
+                                <i class="fa-solid fa-fire"></i><p>Heating</p>
+                            </div>
+                            <p>Forced Air</p>
+                            <div>
+                                <i class="fa-solid fa-hand-holding-dollar"></i><p>Deposit</p>
+                            </div>
+                            <p>$500</p>
+                            <div>
+                                <i class="fa-solid fa-paw"></i><p>Pets</p>
+                            </div>
+                            <p>None</p>
+                        </div>
                     </section>
                     <section id="contact">
                         <h3>Contact</h3>

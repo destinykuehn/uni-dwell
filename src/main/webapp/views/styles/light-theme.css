@@ -8,5 +8,9 @@
     --text-color: black;
     --input-bg-color: white;
     --sub-links: rgba(0, 0, 0, 0.3);
+    --header-color: white;
+    --header-nav-color: #00b0fa;
+
+
     --login-bg: url("../images/light-login-bg.jpg");
 }
